@@ -77,9 +77,21 @@ local function findPlayerUnderCursor()
     return nearestPlayer
 end
 
-local function getFullCharacterModel(character)
+global.originalModels = {}
+getgenv().getFullCharacterModel = function(character)
+
+    if global.originalModels[character] then
+        if global.originalModels[character]:IsDescendantOf(Workspace) then
+            return global.originalModels[character]
+        else
+            global.originalModels[character] = nil
+        end
+    end
 
     local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if not humanoidRootPart then
+        return nil
+    end
 
     local nearest
 
@@ -87,43 +99,25 @@ local function getFullCharacterModel(character)
     for _, fullCharacter in ipairs(Workspace.Characters:GetChildren()) do
         local upperTorso = fullCharacter:FindFirstChild("UpperTorso")
         if upperTorso then
-            local distance = (humanoidRootPart.Position - upperTorso.Position).Magnitude
+            local distance = ((humanoidRootPart.Position + Vector3.new(0, 3.5, 0)) - upperTorso.Position).Magnitude
             if distance <= minDist then
                 nearest = fullCharacter
                 minDist = distance
             end
         end
     end
+    global.originalModels[character] = nearest
 
     return nearest
 end
 
 local function getHead(character)
-    if config.UseOriginalHead then
-        if game.GameId == 41210807 then -- for the gun testing
-            local fullModel = getFullCharacterModel(character)
-            if fullModel then
-                local head = fullModel:FindFirstChild("Head")
-                if head then
-                    return head
-                end
-            end
-            warn("Failed to find original head in GunTesting mode")
-            return character:FindFirstChild("ServerColliderHead")
-            
-        else
-            local worldCharacter = character:FindFirstChild("WorldCharacter")
-            if worldCharacter then
-                local head = worldCharacter:FindFirstChild("Head")
-                if head then
-                    return head
-                end
-            end
-            warn("Failed to find original head in Aftermath mode")
-            return character:FindFirstChild("ServerColliderHead")
+    local fullModel = getFullCharacterModel(character)
+    if fullModel then
+        local head = fullModel:FindFirstChild("Head")
+        if head then
+            return head
         end
-    else
-        return character:FindFirstChild("ServerColliderHead")
     end
 end
 
