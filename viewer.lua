@@ -42,7 +42,7 @@ local findPlayerUnderCursor = function()
 
     
     for _, player in Players:GetPlayers() do
-        if player ~= LocalPlayer and player.Character then
+        if player ~= Players.LocalPlayer and player.Character then
             local rootPart = player.Character:FindFirstChild("ServerCollider")
             if rootPart then
                 local screenPos = Camera:WorldToViewportPoint(rootPart.Position)
