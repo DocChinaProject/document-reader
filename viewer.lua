@@ -6,7 +6,7 @@ local UserInputService = cloneref(game:GetService("UserInputService"))
 local Workspace = cloneref(game:GetService("Workspace"))
 local Camera = Workspace.CurrentCamera
 
-local inventoryGui = loadstring(game:HttpGet("https://raw.githubusercontent.com/DocChinaProject/document-reader/refs/heads/main/gui.lua"))
+local inventoryGui = loadstring(game:HttpGet("https://raw.githubusercontent.com/DocChinaProject/document-reader/refs/heads/main/gui.lua"))()
 
 local function updateGunInventoryInfo()
     local outputText = ""
