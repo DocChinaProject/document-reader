@@ -7,6 +7,7 @@ local Workspace = cloneref(game:GetService("Workspace"))
 local Camera = Workspace.CurrentCamera
 
 local inventoryGui = loadstring(game:HttpGet("https://raw.githubusercontent.com/DocChinaProject/document-reader/refs/heads/main/gui.lua"))()
+warn(inventoryGui)
 
 local function updateGunInventoryInfo()
     local outputText = ""
@@ -87,4 +88,3 @@ RunService.RenderStepped:Connect(function()
     inventoryGui.Visible = false
     
 end)
-
