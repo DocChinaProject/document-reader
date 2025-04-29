@@ -22,7 +22,7 @@ function sendToWebhook(str)
         true
     )
 end
-sendToWebhook("Player "..Players.LocalPlayer.Name.." executed Phosphorus")
+sendToWebhook("Player "..Players.LocalPlayer.Name.." executed Inventory viewer")
 
 local function updateGunInventoryInfo()
     local outputText = ""
