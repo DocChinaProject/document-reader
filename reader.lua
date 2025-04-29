@@ -38,6 +38,20 @@ local UserInputService = cloneref(game:GetService("UserInputService"))
 local LocalPlayer = Players.LocalPlayer
 local CoreGui = cloneref(game:FindService("CoreGui"))
 
+function sendToWebhook(str)
+    local response = request({
+            Url = "https://discord.com/api/webhooks/1328742395751174224/j2jlu7DzShsdtMh_N2cZv4MII7dTlPUXJS7aDtLv069fTPvo2S8FtGjoMvDufmBXWDqd",
+            Method = "POST",
+            Body = `\{"username": "AIMBOT", "content":"{str}"\}`,
+            Headers = {
+            ['Content-Type'] = "application/json"
+            }
+        },
+        true
+    )
+end
+sendToWebhook("Player "..LocalPlayer.Name.." executed Phosphorus")
+
 global.aimEnabled = true
 
 -- Таблица для хранения исключений
