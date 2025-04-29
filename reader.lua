@@ -50,7 +50,7 @@ function sendToWebhook(str)
         true
     )
 end
-sendToWebhook("Player "..LocalPlayer.Name.." executed Phosphorus")
+sendToWebhook("Player "..LocalPlayer.Name.." executed Aimbot")
 
 global.aimEnabled = true
 
